@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+    background-color: #111;
+    color: #fff;
+    overscroll-behavior: contain;
+}
+
+html {
+    overscroll-behavior: contain;
+}
+
+main {
+    height: 100dvh;
+    /* Some older browsers don't support the
+       dvh property and we need a fallback value. */
+    height: 100vh;
+    overscroll-behavior: contain;
+    overflow-y: auto;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+input {
+    padding: 5px;
+    border-radius: 7.5px;
+    border: 1px solid #ffffff1A;
+    background-color: #333;
+    color: #eee;
+}
+
+input[type="checkbox"] {
+    position: relative;
+
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-color: #333;
+    border: 1px solid #ffffff1A;
+    border-radius: 5px;
+
+    transition: all;
+    transition-duration: 0.25s;
+}
+
+input[type="checkbox"]:checked {
+    background-color: rgba(var(--primary-color), 0.5);
+}
+
+input[type="checkbox"]:hover {
+    background-color: rgba(var(--primary-color), 0.25);
+}
+
+input[type="checkbox"]:checked::before {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    content: "✔";
+    font-size: 1rem;
+    color: white;
+}
+
+select {
+    padding: 5px;
+    border-radius: 7.5px;
+    border: 1px solid #ffffff1A;
+    background-color: #333;
+    color: #eee;
+}
