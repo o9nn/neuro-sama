@@ -12,6 +12,19 @@ Last update: 29th of July 2025, 02:15 GMT
 
 ## Contents
 
+### 🧠 Identity Framework (NEW)
+The [Identity Framework](./identity-framework/README.md) provides a comprehensive cognitive architecture for AI agent personalities with:
+- **Personality Engine** - Character traits and emotional modeling
+- **Memory System** - Episodic and working memory
+- **Cognitive Pipeline** - Perception, reasoning, and action selection
+- **Game Integration Patterns** - Templates for different game types
+- **[Developer Portal](./neurosama.com/developer.html)** - Interactive documentation and guides
+
+📚 **Documentation**:
+- [Integration Guide](./identity-framework/docs/integration-guide.md)
+- [Architecture Overview](./identity-framework/docs/architecture.md)
+- [Game Patterns](./identity-framework/docs/game-patterns.md)
+
 ### API Documentation
 Please familiarize yourself with the [API documentation](./API/README.md) before using the SDKs.
 
