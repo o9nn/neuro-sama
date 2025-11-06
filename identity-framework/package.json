@@ -1,0 +1,26 @@
+{
+  "name": "@neuro-sama/identity-framework",
+  "version": "1.0.0",
+  "description": "Neuro-Sama Identity Framework - Cognitive architecture for AI agent personalities",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts"
+  },
+  "keywords": [
+    "neuro-sama",
+    "ai-agent",
+    "cognitive-architecture",
+    "personality-engine",
+    "llm"
+  ],
+  "author": "Neuro-Sama Development Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {}
+}
