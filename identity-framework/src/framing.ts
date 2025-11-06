@@ -204,14 +204,15 @@ export class FramingSystem {
       frameScores.set(frameName, score);
     }
     
-    // Select frame with highest score
-    let bestFrame: Frame = this.frames.get('strategy')!; // Default
+    // Select frame with highest score (with safe fallback)
+    let bestFrame: Frame = this.frames.get('strategy') ?? Array.from(this.frames.values())[0];
     let bestScore = -Infinity;
     
     for (const [frameName, score] of frameScores) {
       if (score > bestScore) {
         bestScore = score;
-        bestFrame = this.frames.get(frameName)!;
+        const frame = this.frames.get(frameName);
+        if (frame) bestFrame = frame;
       }
     }
     

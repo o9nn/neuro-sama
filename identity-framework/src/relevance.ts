@@ -81,6 +81,18 @@ export interface RelevanceConfig {
   
   /** Maximum nodes in focal attention */
   maxFocusSize: number;
+  
+  /** Minimum keyword length for matching (filters noise words) */
+  minKeywordLength: number;
+  
+  /** Weight for direct query keyword matches */
+  queryMatchWeight: number;
+  
+  /** Weight for context keyword matches */
+  contextMatchWeight: number;
+  
+  /** Weight for spreading activation through connections */
+  spreadActivationWeight: number;
 }
 
 /**
@@ -105,6 +117,10 @@ export class RelevanceRealizationEngine {
       decayRate: 0.05,
       focusThreshold: 0.6,
       maxFocusSize: 5,
+      minKeywordLength: 3,        // Filter short words that add noise
+      queryMatchWeight: 0.3,      // Direct query matches are important
+      contextMatchWeight: 0.1,    // Context provides background relevance
+      spreadActivationWeight: 0.2, // Connected nodes get partial activation
       ...config
     };
     
@@ -297,14 +313,14 @@ export class RelevanceRealizationEngine {
       // Keyword overlap with query
       for (const word of queryWords) {
         if (nodeContent.includes(word)) {
-          score += 0.3;
+          score += this.config.queryMatchWeight;
         }
       }
       
       // Context relevance
       for (const word of contextWords) {
         if (nodeContent.includes(word)) {
-          score += 0.1;
+          score += this.config.contextMatchWeight;
         }
       }
       
@@ -315,7 +331,7 @@ export class RelevanceRealizationEngine {
           const connectedContent = this.getNodeContent(connectedNode);
           for (const word of queryWords) {
             if (connectedContent.includes(word)) {
-              score += 0.2 * strength; // Weighted by connection strength
+              score += this.config.spreadActivationWeight * strength;
             }
           }
         }
@@ -413,7 +429,7 @@ export class RelevanceRealizationEngine {
     return text
       .toLowerCase()
       .split(/\s+/)
-      .filter(word => word.length > 3); // Filter short words
+      .filter(word => word.length > this.config.minKeywordLength);
   }
   
   /**

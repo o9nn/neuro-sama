@@ -12,6 +12,33 @@
 import { ActionPlan, CognitiveContext } from './types';
 
 /**
+ * Configuration thresholds for meta-cognitive assessment
+ */
+export interface MetaCognitiveConfig {
+  /** Minimum reasoning length to avoid overconfidence penalty */
+  minReasoningLength: number;
+  
+  /** Confidence threshold for overconfidence detection */
+  highConfidenceThreshold: number;
+  
+  /** Confidence gap threshold for calibration check */
+  confidenceGapThreshold: number;
+  
+  /** Maximum reasoning history to maintain */
+  maxHistorySize: number;
+}
+
+/**
+ * Default configuration values with rationale
+ */
+export const DEFAULT_METACOGNITIVE_CONFIG: MetaCognitiveConfig = {
+  minReasoningLength: 30,          // At least one sentence of justification
+  highConfidenceThreshold: 0.8,    // Above 80% is "very confident"
+  confidenceGapThreshold: 0.3,     // 30% gap indicates miscalibration
+  maxHistorySize: 20               // Keep recent reasoning for pattern detection
+};
+
+/**
  * Meta-cognitive assessment of reasoning process
  */
 export interface MetaCognitiveAssessment {
@@ -66,7 +93,14 @@ export class MetaCognitiveMonitor {
     timestamp: number;
   }> = [];
   
-  private maxHistorySize: number = 20;
+  private config: MetaCognitiveConfig;
+  
+  constructor(config?: Partial<MetaCognitiveConfig>) {
+    this.config = {
+      ...DEFAULT_METACOGNITIVE_CONFIG,
+      ...config
+    };
+  }
   
   /**
    * Assess reasoning quality before committing to action
@@ -162,7 +196,7 @@ export class MetaCognitiveMonitor {
     const confidenceGap = Math.abs(plan.confidence - successRate);
     
     // Well-calibrated if gap is small
-    return confidenceGap < 0.3;
+    return confidenceGap < this.config.confidenceGapThreshold;
   }
   
   /**
@@ -251,7 +285,8 @@ export class MetaCognitiveMonitor {
     const bullshit: string[] = [];
     
     // Pattern 1: Overconfidence without evidence
-    if (plan.confidence > 0.8 && plan.reasoning.length < 30) {
+    if (plan.confidence > this.config.highConfidenceThreshold && 
+        plan.reasoning.length < this.config.minReasoningLength) {
       bullshit.push(
         'High confidence with minimal reasoning - possible overconfidence'
       );
@@ -461,7 +496,7 @@ export class MetaCognitiveMonitor {
     });
     
     // Maintain size limit
-    if (this.reasoningHistory.length > this.maxHistorySize) {
+    if (this.reasoningHistory.length > this.config.maxHistorySize) {
       this.reasoningHistory.shift();
     }
   }
@@ -486,8 +521,10 @@ export class MetaCognitiveMonitor {
 }
 
 /**
- * Create meta-cognitive monitor with personality tuning
+ * Create meta-cognitive monitor with optional configuration
  */
-export function createMetaCognitiveMonitor(): MetaCognitiveMonitor {
-  return new MetaCognitiveMonitor();
+export function createMetaCognitiveMonitor(
+  config?: Partial<MetaCognitiveConfig>
+): MetaCognitiveMonitor {
+  return new MetaCognitiveMonitor(config);
 }
