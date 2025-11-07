@@ -24,6 +24,15 @@ export * from './framing';
 // Export meta-cognition system
 export * from './metacognition';
 
+// Export transformative experience system
+export * from './transformative';
+
+// Export embodied emotion system
+export * from './embodied-emotion';
+
+// Export theory of mind system
+export * from './theory-of-mind';
+
 // Export main framework
 export * from './framework';
 
@@ -35,3 +44,6 @@ export { NeuroCognitivePipeline, formatContextForLLM } from './cognition';
 export { RelevanceRealizationEngine, createRelevanceEngine } from './relevance';
 export { FramingSystem, framedPerception } from './framing';
 export { MetaCognitiveMonitor, createMetaCognitiveMonitor } from './metacognition';
+export { TransformativeExperienceHandler, createTransformativeHandler } from './transformative';
+export { EmbodiedEmotionSystem, createEmbodiedEmotionSystem } from './embodied-emotion';
+export { TheoryOfMindSystem, createTheoryOfMindSystem } from './theory-of-mind';
