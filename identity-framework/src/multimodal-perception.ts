@@ -126,6 +126,16 @@ export const DEFAULT_MULTIMODAL_CONFIG: MultiModalConfig = {
 };
 
 /**
+ * Raw visual input type (extensible to actual image formats)
+ */
+export type VisualInput = unknown;  // ImageData, Buffer, Tensor, etc.
+
+/**
+ * Raw audio input type (extensible to actual audio formats)
+ */
+export type AudioInput = unknown;  // AudioBuffer, Float32Array, etc.
+
+/**
  * Multi-Modal Perception System
  * 
  * Integrates text, visual, and audio information for richer perception.
@@ -145,8 +155,8 @@ export class MultiModalPerceptionSystem {
    */
   async perceive(
     gameState: GameState,
-    visualInput?: any,  // Raw visual data (frame, screenshot, etc.)
-    audioInput?: any    // Raw audio data
+    visualInput?: VisualInput,
+    audioInput?: AudioInput
   ): Promise<MultiModalPercept> {
     // Text perception (always available)
     const text = gameState.description;
@@ -202,7 +212,7 @@ export class MultiModalPerceptionSystem {
    * Process visual input
    * Placeholder - would use actual vision model in production
    */
-  private async processVisual(visualInput: any): Promise<VisualPercept> {
+  private async processVisual(visualInput: VisualInput): Promise<VisualPercept> {
     // This is a placeholder. In production, would call:
     // - Object detection model (YOLO, etc.)
     // - Scene classification model
@@ -226,7 +236,7 @@ export class MultiModalPerceptionSystem {
    * Process audio input
    * Placeholder - would use actual audio model in production
    */
-  private async processAudio(audioInput: any): Promise<AudioPercept> {
+  private async processAudio(audioInput: AudioInput): Promise<AudioPercept> {
     // This is a placeholder. In production, would call:
     // - Sound event detection model
     // - Speech recognition (Whisper, etc.)

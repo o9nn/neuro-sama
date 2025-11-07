@@ -577,8 +577,8 @@ export class SemanticMemorySystem {
     for (let c = 0; c < k; c++) {
       const clusterEpisodes = this.embeddings
         .filter((_, i) => assignments[i] === c)
-        .map(e => this.episodeMap.get(e.id)!)
-        .filter(e => e !== undefined);
+        .map(e => this.episodeMap.get(e.id))
+        .filter((e): e is Episode => e !== undefined);
       
       if (clusterEpisodes.length === 0) {
         continue;

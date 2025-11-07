@@ -741,10 +741,10 @@ export class TheoryOfMindSystem {
   }
   
   /**
-   * Check if statement aligns with goals
+   * Check if statement misaligns with goals (returns true if mismatch detected)
    */
   private checkGoalAlignment(model: MentalStateModel, statement: string): boolean {
-    if (model.goals.length === 0) return false;
+    if (model.goals.length === 0) return false;  // No goals, can't detect mismatch
     
     const s = statement.toLowerCase();
     
@@ -752,10 +752,10 @@ export class TheoryOfMindSystem {
     for (const goal of model.goals) {
       const goalKeywords = this.extractKeywords(goal);
       const hasGoalKeyword = goalKeywords.some(kw => s.includes(kw));
-      if (hasGoalKeyword) return false;  // Aligned
+      if (hasGoalKeyword) return false;  // Statement aligns with goal - no mismatch
     }
     
-    return true;  // No alignment found - mismatch
+    return true;  // No alignment found with any goal - mismatch detected
   }
   
   /**
