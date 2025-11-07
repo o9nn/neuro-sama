@@ -42,6 +42,15 @@ export * from './narrative-coherence';
 // Export distributed cognition system
 export * from './distributed-cognition';
 
+// Export semantic memory system
+export * from './semantic-memory';
+
+// Export multi-modal perception system
+export * from './multimodal-perception';
+
+// Export meta-learning system
+export * from './meta-learning';
+
 // Export main framework
 export * from './framework';
 
@@ -59,3 +68,6 @@ export { TheoryOfMindSystem, createTheoryOfMindSystem } from './theory-of-mind';
 export { EnactedCognitionSystem, createEnactedCognitionSystem } from './enacted-cognition';
 export { NarrativeCoherenceSystem, createNarrativeCoherenceSystem } from './narrative-coherence';
 export { DistributedCognitionSystem, createDistributedCognitionSystem } from './distributed-cognition';
+export { SemanticMemorySystem, createSemanticMemorySystem, SimpleTFIDFEmbedding } from './semantic-memory';
+export { MultiModalPerceptionSystem, createMultiModalPerceptionSystem } from './multimodal-perception';
+export { MetaLearningSystem, createMetaLearningSystem } from './meta-learning';
