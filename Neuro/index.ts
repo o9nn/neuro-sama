@@ -45,7 +45,7 @@ function sendAction(actionName: string) {
 	actionId++;
 
     if (actionName == "choose_name") {
-        send({command: "action", data: {id, name: "choose_name", data: JSON.stringify({name: "RANDY"})}});
+        send({command: "action", data: {id, name: "choose_name", data: JSON.stringify({name: "NEURO"})}});
         return;
     }
 
