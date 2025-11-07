@@ -33,6 +33,15 @@ export * from './embodied-emotion';
 // Export theory of mind system
 export * from './theory-of-mind';
 
+// Export enacted cognition system
+export * from './enacted-cognition';
+
+// Export narrative coherence system
+export * from './narrative-coherence';
+
+// Export distributed cognition system
+export * from './distributed-cognition';
+
 // Export main framework
 export * from './framework';
 
@@ -47,3 +56,6 @@ export { MetaCognitiveMonitor, createMetaCognitiveMonitor } from './metacognitio
 export { TransformativeExperienceHandler, createTransformativeHandler } from './transformative';
 export { EmbodiedEmotionSystem, createEmbodiedEmotionSystem } from './embodied-emotion';
 export { TheoryOfMindSystem, createTheoryOfMindSystem } from './theory-of-mind';
+export { EnactedCognitionSystem, createEnactedCognitionSystem } from './enacted-cognition';
+export { NarrativeCoherenceSystem, createNarrativeCoherenceSystem } from './narrative-coherence';
+export { DistributedCognitionSystem, createDistributedCognitionSystem } from './distributed-cognition';
