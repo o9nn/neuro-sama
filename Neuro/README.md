@@ -1,11 +1,29 @@
 # Neuro
 
-Neuro (Placeholder from Randy) is a simple websocket server designed to mimic Neuro. Note that Neuro will just pick random actions and will not simulate some behaviors that Neuro could do including:
-- sending actions with invalid data
-- doing registered actions without actions being forced
-- not *immediately* respond to forced actions
+Neuro is an advanced websocket server implementation that embodies the Neuro-Sama AI VTuber personality. Unlike Randy (which picks random actions), Neuro uses a cognitive engine to make personality-driven decisions that reflect authentic character traits.
 
-You can use Neuro to test your local websocket implementations.
+## Features
+
+- **Cognitive Engine**: Processes game states using personality-driven decision making
+- **Emotional States**: Dynamic emotional responses (neutral, happy, excited, annoyed, thoughtful, confused)
+- **Frame Shifting**: Adapts perspective between play, strategy, chaos, social, learning, and threat frames
+- **Personality Traits**: 
+  - Playfulness: 0.8 - High tendency toward fun and creative chaos
+  - Intelligence: 0.9 - Strong strategic reasoning
+  - Chaotic: 0.7 - Preference for exploration and unpredictability
+  - Empathy: 0.6 - Moderate social awareness
+  - Sarcasm: 0.75 - Witty, sarcastic commentary
+- **Relevance Realization**: Actions are scored based on context, personality, and active frame
+- **Exploration vs Exploitation**: Balances strategic choices with chaotic experimentation
+
+## How It Works
+
+Neuro doesn't just pick random actions - it:
+1. Processes game state to update emotional state and active frame
+2. Scores available actions based on relevance to current context
+3. Applies personality traits to decision making
+4. Balances exploitation (best action) with exploration (chaotic choices)
+5. Generates action data that fits the schema while expressing personality
 
 ## Installation
 
@@ -19,9 +37,9 @@ Neuro will open a websocket server on port `8000`, and a http server on port `13
 
 You can connect to it using the websocket url `ws://localhost:8000`.
 
-You can send POST requests to the http port in order to mimic the websocket server sending that message to the client.
+### Testing Manual Actions
 
-For example, by sending the command below, you can simulate an action being executed.
+You can send POST requests to the http port to manually trigger actions or test specific scenarios:
 
 ```bash
 curl --request POST \
@@ -30,14 +48,48 @@ curl --request POST \
   --data '{
 	"command": "action",
 	"data": {
-		"id": "blegh",
-		"name": "join_friend_lobby",
-		"data": "{\"friend_name\": \"jerma985\"}"
+		"id": "test_1",
+		"name": "choose_name",
+		"data": "{\"name\": \"NEURO\"}"
 	}
 }'
 ```
 
-Neuro will only send actions if he is forced to. He will not execute actions randomly. Use the above example to manually execute actions.
+### Observing Personality
+
+Watch the console output to see Neuro's cognitive processes in action:
+- Emotional state changes
+- Frame shifts (play → strategy → chaos, etc.)
+- Personality commentary on selected actions
+- Action scoring and selection logic
+
+### Example Output
+
+```
+🧠 Neuro cognitive engine initialized
+   Personality traits: Playfulness=0.8, Intelligence=0.9, Chaotic=0.7
++ Connection opened
+📝 Registered 3 actions. Total: 3
+⚡ Force received: "It's your turn. Choose an action."
+   Available actions: play_card, pass_turn, use_item
+💭 Emotional state changed: neutral → thoughtful
+🔄 Frame shifted: play → strategy
+✨ Selected action: play_card (frame: strategy, emotion: thoughtful)
+🎯 This sets up for next turn nicely
+✅ Action succeeded: play_card
+```
+
+## Differences from Randy
+
+Unlike Randy (random action picker), Neuro:
+- Uses cognitive processing to understand game context
+- Maintains emotional state across interactions
+- Applies personality traits to decision making
+- Shifts perspective frames based on situation
+- Provides personality-appropriate commentary
+- Balances strategic thinking with chaotic exploration
+
+Note: Neuro still only sends actions when forced (like Randy). The difference is in *how* it chooses which action to take.
 
 > [!Note]  
 > Neuro sometimes refuses to let go of the port when closed, not sure if it's my fault or not but I can't be bothered to fix it.  
