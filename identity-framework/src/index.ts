@@ -24,6 +24,33 @@ export * from './framing';
 // Export meta-cognition system
 export * from './metacognition';
 
+// Export transformative experience system
+export * from './transformative';
+
+// Export embodied emotion system
+export * from './embodied-emotion';
+
+// Export theory of mind system
+export * from './theory-of-mind';
+
+// Export enacted cognition system
+export * from './enacted-cognition';
+
+// Export narrative coherence system
+export * from './narrative-coherence';
+
+// Export distributed cognition system
+export * from './distributed-cognition';
+
+// Export semantic memory system
+export * from './semantic-memory';
+
+// Export multi-modal perception system
+export * from './multimodal-perception';
+
+// Export meta-learning system
+export * from './meta-learning';
+
 // Export main framework
 export * from './framework';
 
@@ -35,3 +62,12 @@ export { NeuroCognitivePipeline, formatContextForLLM } from './cognition';
 export { RelevanceRealizationEngine, createRelevanceEngine } from './relevance';
 export { FramingSystem, framedPerception } from './framing';
 export { MetaCognitiveMonitor, createMetaCognitiveMonitor } from './metacognition';
+export { TransformativeExperienceHandler, createTransformativeHandler } from './transformative';
+export { EmbodiedEmotionSystem, createEmbodiedEmotionSystem } from './embodied-emotion';
+export { TheoryOfMindSystem, createTheoryOfMindSystem } from './theory-of-mind';
+export { EnactedCognitionSystem, createEnactedCognitionSystem } from './enacted-cognition';
+export { NarrativeCoherenceSystem, createNarrativeCoherenceSystem } from './narrative-coherence';
+export { DistributedCognitionSystem, createDistributedCognitionSystem } from './distributed-cognition';
+export { SemanticMemorySystem, createSemanticMemorySystem, SimpleTFIDFEmbedding } from './semantic-memory';
+export { MultiModalPerceptionSystem, createMultiModalPerceptionSystem } from './multimodal-perception';
+export { MetaLearningSystem, createMetaLearningSystem } from './meta-learning';
