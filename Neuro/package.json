@@ -4,7 +4,8 @@
   "private": true,
   "main": "index.ts",
   "scripts": {
-    "start": "npx tsx index.ts"
+    "start": "npx tsx index.ts",
+    "test": "npx tsx test-client.ts"
   },
   "author": "Vedal AI",
   "dependencies": {

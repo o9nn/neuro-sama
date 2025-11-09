@@ -31,6 +31,21 @@ Neuro doesn't just pick random actions - it:
 2. Run `npm install` in the `Neuro` folder
 3. Run `npm start` in the `Neuro` folder
 
+## Testing
+
+A test client is included to demonstrate Neuro's personality-driven behavior:
+
+1. In one terminal, run `npm start` to start the Neuro server
+2. In another terminal, run `npm test` to run the test client
+
+The test will demonstrate:
+- Strategic thinking when behind in a game
+- Playful behavior when winning
+- Cautious responses to confusing situations
+- Personality commentary and emotional state changes
+
+Watch both terminals to see Neuro's cognitive processes in action!
+
 ## Usage
 
 Neuro will open a websocket server on port `8000`, and a http server on port `1337`.
